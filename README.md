@@ -7,3 +7,4 @@ Usage:
 3) The program will display their sum in the "output" number system. 
 
 P.S. Full control of user input errors has been done, that's why there are so many lines of code
+P.S.S. The problem was given to me by a teacher at Moscow State University
