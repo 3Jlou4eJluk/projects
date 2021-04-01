@@ -9,5 +9,3 @@ Usage:
 5) The program will calculate the area of a curvilinear triangle, find the intersection points of functions, and plot functions
 
 P.S. The program does not localize the curvilinear triangle itself, but in order to find the roots, you yourself need to set the search range for the roots and the accuracy of finding them.
-
-P.S.S. The problem was given to me by a teacher at Moscow State University
