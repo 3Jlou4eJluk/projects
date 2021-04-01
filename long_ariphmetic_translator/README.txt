@@ -8,5 +8,3 @@ Usage:
 5) The program will display the result of addition in the output numeral system 
 
 P.S. The program is written with control over the input of all errors by the user, which is why there are so many lines of code.
-
-P.S.S. The problem was given to me by a teacher at Moscow State University
