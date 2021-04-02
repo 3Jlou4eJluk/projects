@@ -17,14 +17,14 @@ N equ 511
 
 
     .data?
-X db BN dup (?)
-Y db BN dup (?)
-LEN dw ?
-LEN1 dd ?
-LEN2 dd ?
-NLEN1 dd ?
-NLEN2 dd ?
-CHAR_MAS dw 255 dup (?)
+        X db BN dup (?)
+        Y db BN dup (?)
+        LEN dw ?
+        LEN1 dd ?
+        LEN2 dd ?
+        NLEN1 dd ?
+        NLEN2 dd ?
+        CHAR_MAS dw 255 dup (?)
     .code
 
 comment *
