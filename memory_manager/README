@@ -1,0 +1,6 @@
+This is realisation of memory manager(membanks.c, membanks.h), which have 5 functions:
+1) unsigned int alloc(unsigned int size) - allocates for a new block of memory with specified size(returns current block's number)
+2) void dealloc(unsigned int block_num) - deallocates block with specified number
+3) void write_byte(unsigned int bank, unsigned int delta, char byte) - writes byte in specified block
+4) char read_byte(unsigned int bank, unsigned int delta) - read byte from block
+5) unsigned int reallocm(unsigned int bank, unsigned int size) - enlarge block
