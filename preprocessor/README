@@ -4,6 +4,7 @@ Rules:
 1) comment starts with
 2) definition contains '=', and not an empty name
 3) variable substitution is denoted by the '$'
+4) line input is active until EOF arrives(Ctrl + D)
 
 Example
 
