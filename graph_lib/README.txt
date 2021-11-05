@@ -5,8 +5,8 @@ int graph_del_edge(struct Graph* graph, int start, int end); - removing an edge
 void print_graph(struct Graph* graph); - print count
 int graph_add_vertex(struct Graph *graph, int vert); - added tops
 int graph_del_vertex(struct Graph *graph, int vert); - removal of vertices
-int graph_check_vertex(struct Graph * graph, int vertex); - check the presence of peaks (additional)
-int graph_search_edge(struct Graph * graph, int start, int end, int reload_flag); - check the presence of edges (additional)
+int graph_check_vertex(struct Graph * graph, int vertex); - check the presence of peaks
+int graph_search_edge(struct Graph * graph, int start, int end, int reload_flag); - check the presence of edges
 void graph_kill(struct Graph * graph); - deinitialization count
 
 In a separate module(graph_algo.h) implemented
