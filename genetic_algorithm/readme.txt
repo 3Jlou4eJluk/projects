@@ -1,4 +1,4 @@
-The function(function F5(x: single): single;) is set in the genetic_task.pas module. Constants A, B, M are set in the types.pas module. The program searches for the maximum of the function on the segment A, B, which is discretized by 2 to the power of M points.
+The function(function F5(x: single): single;) is set in the genetic_task.pas module. Constants A, B, M are set in the types.pas module. The program searches for the maximum of the function on the segment A, B, which is discretized by 2^M points.
 
 This genetic algorithm assumes the functions of selection, crossing and mutation.
 
