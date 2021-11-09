@@ -6,3 +6,5 @@ This is realisation of memory manager(membanks.c, membanks.h), which have 5 func
 5) unsigned int reallocm(unsigned int bank, unsigned int size) - enlarge block
 
 In solution.c I use these functions to find string with biggest length.
+
+IMHO: So stupid task
