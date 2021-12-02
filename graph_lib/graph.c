@@ -157,7 +157,6 @@ int graph_del_vertex(struct Graph *graph, int vert) {
 
 /*
 The function adds an edge to the graph graph: start -> end.
-returns 0 if successful, 1 if unsuccessful
 */
 int graph_add_edge(struct Graph *graph, int start, int end, double weight) {
 
