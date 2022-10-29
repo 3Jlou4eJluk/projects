@@ -15,7 +15,6 @@
 
 You can use pipe to redirect python_generation_script.py output to Bitpacked_Boolean_Matrix.cpp like that
 
->bash
 >python python_generation_script.py | ./a.out
 
 
