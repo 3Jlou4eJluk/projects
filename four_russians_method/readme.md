@@ -13,7 +13,10 @@
 3. input m, n, k (first matrix shape are (m, n), second are (n, k), result are (m, k)
 4. Output is first * second
 
->You can use pipe to redirect python_generation_script.py output to Bitpacked_Boolean_Matrix.cpp
+You can use pipe to redirect python_generation_script.py output to Bitpacked_Boolean_Matrix.cpp like that
+
+>bash
+>python python_generation_script.py | ./a.out
 
 
 ## Features:
