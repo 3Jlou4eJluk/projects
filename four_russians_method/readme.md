@@ -5,3 +5,10 @@ runtime_info.txt contains "void FourRussians()" working time on matrix sizes: 10
 python_generation_script.py generates 2 matrixes of size N(from input), multiply them and put them into file.
 
 Bitpacked_Boolean_Matrix.cpp takes shape and 2 matrixes from standart input, multiply them and put multiplication result in file.
+
+## Usage
+
+1. make
+2. ./a.out
+3. input m, n, k (first matrix shape are (m, n), second are (n, k), result are (m, k)
+4. Output is first * second
