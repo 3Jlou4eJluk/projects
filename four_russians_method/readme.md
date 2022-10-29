@@ -26,6 +26,5 @@ You can use pipe to redirect python_generation_script.py output to Bitpacked_Boo
 4. Implemented sequential data storage to optimize memory handling
 
 ## Important
-Four Russians Method constant = 6, because a larger value does not allow efficient use of the cache
-
-> The goal of the project is to learn how to use caching to improve the efficiency of the program
+Four Russians Method constant = 6, because a larger value does not allow efficient use of the cache.
+The goal of the project is to learn how to use caching to improve the efficiency of the program.
