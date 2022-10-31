@@ -4,7 +4,7 @@
 
 1. tokens.c: a set of functions responsible for parsing a string into tokens
 2. descent.c: it contains functions that are responsible for implementing recursive descent and building an execution tree
-3. run.c: run.c contains the implementation of the functions that are responsible for executing the built tree
+3. run.c: contains the implementation of the functions that are responsible for executing the built tree
 
 ## Tree node structure
 
