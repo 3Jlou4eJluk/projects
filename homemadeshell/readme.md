@@ -22,14 +22,14 @@ struct Node {
 };
 ```
 
-char **argv - аrray of subcommand arguments
-char *ifile - intput file for subcommand
-char *ofile - output file for subcommand
-int bg_flag - background mod flag for subcommand
-int op_code - the result of the subcommand is stored here
-struct Node* br_p - if the subcommand is of bracket type, then this is a pointer to the subtree corresponding to the expression in brackets
-struct Node* pipe - pointer to the next element of the pipeline
-struct Node* next - pointer to the subtree of the next command
+- char **argv - аrray of subcommand arguments
+- char *ifile - intput file for subcommand
+- char *ofile - output file for subcommand
+- int bg_flag - background mod flag for subcommand
+- int op_code - the result of the subcommand is stored here
+- struct Node* br_p - if the subcommand is of bracket type, then this is a pointer to the subtree corresponding to the expression in brackets
+- struct Node* pipe - pointer to the next element of the pipeline
+- struct Node* next - pointer to the subtree of the next command
 
 ## Usage:
 1. make
