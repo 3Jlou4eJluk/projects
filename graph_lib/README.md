@@ -13,7 +13,8 @@
 - void graph_kill(struct Graph * graph); - deinitialization count
 
 In separate module:
-- struct Graph* dijkstra function(struct Graph * graph, int start, int end);
+- struct Graph* dijkstra function(struct Graph * graph, int start, int end); \n
+
 It looks for the shortest path from the vertex start to the vertex end and returns a graph containing this path. 
 (Returns in the graph all the shortest paths that were calculated in the process.)
 
