@@ -1,4 +1,7 @@
-In the graph.c module, I implemented the functions:
+# Graph lib
+
+## Implemented functions
+
 struct Graph* graph_init(void); - initialization of the graph
 int graph_add_edge(struct Graph *graph, int start, int end, double weight); - adding an edge
 int graph_del_edge(struct Graph* graph, int start, int end); - removing an edge
@@ -9,12 +12,15 @@ int graph_check_vertex(struct Graph * graph, int vertex); - check the presence o
 int graph_search_edge(struct Graph * graph, int start, int end, int reload_flag); - check the presence of edges
 void graph_kill(struct Graph * graph); - deinitialization count
 
-In a separate module(graph_algo.h) implemented
+In separate module:
 the struct Graph* dijkstra function(struct Graph * graph, int start, int end);
 It looks for the shortest path from the vertex start to the vertex end and returns a graph containing this path. 
 (Returns in the graph all the shortest paths that were calculated in the process.)
 
 And now a little bit about how it is stored here, perhaps it is not quite clear in the comments to the code.
+
+
+## How it works
 
 The vid array contains the vertex numbers specified by the user and the "service numbers", which represent the index of the vert array.
 At the i-th place, in the vert array, the index is stored in the adj1 array of the end of the edge originating from the vertex with the 
