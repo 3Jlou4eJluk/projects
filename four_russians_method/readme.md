@@ -20,10 +20,9 @@ You can use pipe to redirect python_generation_script.py output to Bitpacked_Boo
 
 ## Features:
 
-1. Implemented class Bitpacked_Boolean_Matrix, which use uint64_t to store bits
-2. Implemented class BitPtr, whick makes it possible to assign a value to a bit
-3. Implemented void FourRuissiansMethod() function, that Blockwise multiplies matrices
-4. Implemented sequential data storage to optimize memory handling
+1. Implemented class BitPackedMatrix, which use uint64_t to store bits
+2. Implemented ![method of four russians](https://louridas.github.io/rwa/assignments/four-russians/)
+
 
 ## Important
 Four Russians Method constant = 4, because a larger value does not allow efficient use of the cache.
