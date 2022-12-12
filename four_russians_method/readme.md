@@ -21,7 +21,7 @@ You can use pipe to redirect python_generation_script.py output to Bitpacked_Boo
 ## Features:
 
 1. Implemented class BitPackedMatrix, which use uint64_t to store bits
-2. Implemented ![method of four russians](https://louridas.github.io/rwa/assignments/four-russians/)
+2. Implemented [method of four russians](https://louridas.github.io/rwa/assignments/four-russians/)
 
 
 ## Important
