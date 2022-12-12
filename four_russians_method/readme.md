@@ -30,4 +30,4 @@ Four Russians Method constant = 4, because a larger value does not allow efficie
 The goal of the project is to learn how to use caching to improve the efficiency of the program.
 
 Current work time on different boolean matrixes of shape (n, n):
-![./runtime_info.png]
+![runtime_info.png]
