@@ -4,18 +4,15 @@
 
 - python_generation_script.py generates 2 matrixes of size N(from input), put them in standart output, multiply them and put result into file.
 
-- Bitpacked_Boolean_Matrix.cpp takes shape and 2 matrixes from standart input, multiply them and put multiplication result in file.
+- main.cpp takes shape and 2 matrixes from input.txt, multiply them and put multiplication result in file "./cpp_output_<n>.txt", where n is square size of matrixes
 
 ## Usage
 
 1. make
 2. ./a.out
-3. input m, n, k (first matrix shape are (m, n), second are (n, k), result are (m, k)
-4. Output is first * second
-
-You can use pipe to redirect python_generation_script.py output to Bitpacked_Boolean_Matrix.cpp like that
-
->python python_generation_script.py | ./a.out
+3. input n
+4. input matrixes
+5 Output is first * second
 
 
 ## Features:
