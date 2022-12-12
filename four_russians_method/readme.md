@@ -12,7 +12,7 @@
 2. ./a.out
 3. input n
 4. input matrixes
-5 Output is first * second
+5. Output is first * second
 
 
 ## Features:
