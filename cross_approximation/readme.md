@@ -17,3 +17,5 @@ Let's check algorithm on Hilbert matrix with shape (1000, 1000)
 
 
 In Cross_Approximation.ipynb you can check this algorithm on other matrix.
+
+You can verify the correctness of the pre_maxvol and maxvol algorithms in the following [article](https://arxiv.org/pdf/1809.02334.pdf).
