@@ -22,10 +22,8 @@ def orthogonal_complement(x, normalize=False, threshold=1e-15):
     return oc
 
 
-def pre_maxvol(matrix):
-    rank = np.linalg.matrix_rank(matrix)
+def pre_maxvol(matrix, rank):
     res = np.int64(np.zeros(rank))
-    M, n = matrix.shape
     row_norms = np.linalg.norm(matrix, axis = 1) ** 2
     
     for k in range(rank):
@@ -42,7 +40,7 @@ def search_start_columns(matrix, start_rows, threshold=1e-16):
     mat = matrix[start_rows]
     q, r = np.linalg.qr(mat)
     rank = len(start_rows)
-    res = np.zeros(rank).astype('int64')
+    res = np.zeros(rank)
     cur_i = 0
     shift = 0
     for i in range(r.shape[1]):
@@ -140,10 +138,10 @@ def maxvol(matrix, start_rows, start_columns, eps=1e-3, max_iters=50):
 
 
 
-def search_max_volume_submatrix(matrix, eps=1e-4, zero_threshold=1e-16, max_iters=50):
+def search_max_volume_submatrix(matrix, rank, eps=1e-4, zero_threshold=1e-16, max_iters=50):
     matrix = np.float64(matrix)
     # ищем неплохое начальное приближение
-    start_rows = pre_maxvol(matrix)
+    start_rows = pre_maxvol(matrix, rank)
 
     start_columns = np.int64(search_start_columns(matrix, start_rows, zero_threshold))
 
