@@ -13,4 +13,4 @@ In cross_approx.py implemented
 
 Let's check algorithm on Hilbert matrix
 
-![Hilbert](https://github.com/3Jlou4eJluk/projects/tree/main/cross_approximation/img)
+![Hilbert](https://raw.githubusercontent.com/3Jlou4eJluk/projects/tree/main/cross_approximation/img)
