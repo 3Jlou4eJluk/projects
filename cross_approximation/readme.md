@@ -11,7 +11,7 @@ In cross_approx.py implemented
 2. function ***def build_cross_approx(matrix, rank, eps=1e-4, zero_threshold=1e-16, max_iters=50)***, which build cross approximation of matrix
 
 
-Let's check algorithm on Hilbert matrix with shape (1000, 1000)
+Let's check algorithm on [Hilbert matrix](https://en.wikipedia.org/wiki/Hilbert_matrix) with shape (1000, 1000)
 
 ![Hilbert](https://raw.githubusercontent.com/3Jlou4eJluk/projects/main/cross_approximation/img/dependence_plot.png)
 
