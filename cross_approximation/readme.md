@@ -1,7 +1,7 @@
 # Cross approximation
 
 
-Cross approximation is the low-rank approximation method, which can be used in different areas such as data analysis and machine learning.
+Cross approximation is the low-rank approximation method, which can be used in different areas such as data analysis or machine learning.
 
 
 In cross_approx.py implemented 
