@@ -14,3 +14,6 @@ In cross_approx.py implemented
 Let's check algorithm on Hilbert matrix
 
 ![Hilbert](https://raw.githubusercontent.com/3Jlou4eJluk/projects/main/cross_approximation/img/dependence_plot.png)
+
+
+In Cross_Approximation.ipynb you can check this algorithm on other matrix.
