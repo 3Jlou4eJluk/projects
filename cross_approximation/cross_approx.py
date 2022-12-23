@@ -150,3 +150,9 @@ def search_max_volume_submatrix(matrix, rank, eps=1e-4, zero_threshold=1e-16, ma
     
     # запускаем maxvol на начальных данных
     return maxvol(matrix, start_rows, start_columns, eps, max_iters)
+
+
+def build_cross_approx(matrix, rank, eps=13-4, zero_threshold=1e-16, max_iters=50):
+    rows, cols = search_max_volume_submatrix(matrix, rank, eps, zero_threshold, max_iters)
+    cross_approx = matrix[:, cols] @ np.linalg.inv(matrix[rows, :][:, cols]) @ matrix[rows, :]
+    return cross_approx
