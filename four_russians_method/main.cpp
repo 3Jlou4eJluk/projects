@@ -25,7 +25,7 @@ int main() {
     res_mat.fill_with_zeros();
 
     unsigned long long start_time = clock();
-    FourRussiansMethod(mat1, mat2, res_mat, 4);
+    FourRussiansMethod(mat1, mat2, res_mat, 8);
     unsigned long long end_time = clock();
 
     runtime_stream << n << "," << (end_time - start_time) / (CLOCKS_PER_SEC / 1000) << std::endl;
