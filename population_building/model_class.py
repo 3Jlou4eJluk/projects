@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import networkx as nx
 
 from scipy.stats import norm
 from tqdm import tqdm
@@ -28,26 +29,40 @@ class InfectionModelExperimental:
         self.hhs_database = None
         self.age_range_table = None
         self.agents_count = None
+        self.households_data_path = './data/bryansk_data.xlsx'
+        self.peoples_age_sex_data_path = './data/Age_sex_count_v1.xlsx'
+        self.men_marriage_urban_data_path = \
+            './population_building_data/marriage_data/bryansk_urban_men_marriage_data.xlsx'
+        self.men_marriage_rural_data_path = \
+            './population_building_data/marriage_data/bryansk_rural_men_marriage_data.xlsx'
+
+        self.pair1_data_path = 'population_building_data/pair1.xlsx'
+        self.pair2_data_path = 'population_building_data/pair2.xlsx'
+        self.pair3_data_path = 'population_building_data/pair3.xlsx'
+        self.pair_summary_data_path = 'population_building_data/summary.xlsx'
+
+        self.pair1_childs_data_path = 'population_building_data/pair1_v2.xlsx'
+        self.pair2_childs_data_path = 'population_building_data/pair2_v2.xlsx'
+        self.pair3_childs_data_path = 'population_building_data/pair3_v2.xlsx'
+        self.mothers_age_distribution_data_path = './data/mothers_data/BRaO2015-2021.txt'
 
     def load_process_data(self):
-        hhs_data = pd.read_excel('./data/bryansk_data.xlsx')
-        df = pd.read_excel('./data/Age_sex_count_v1.xlsx')
+        hhs_data = pd.read_excel(self.households_data_path)
+        df = pd.read_excel(self.peoples_age_sex_data_path)
         if self.AGENTS_TYPE == 'urban':
-            men_marriage_data = pd.read_excel(
-                './population_building_data/marriage_data/bryansk_urban_men_marriage_data.xlsx')
+            men_marriage_data = pd.read_excel(self.men_marriage_urban_data_path)
         else:
-            men_marriage_data = pd.read_excel(
-                './population_building_data/marriage_data/bryansk_rural_men_marriage_data.xlsx')
-        pair1_df = pd.read_excel('population_building_data/pair1.xlsx')
-        pair2_df = pd.read_excel('population_building_data/pair2.xlsx')
-        pair3_df = pd.read_excel('population_building_data/pair3.xlsx')
-        summary = pd.read_excel('population_building_data/summary.xlsx')
+            men_marriage_data = pd.read_excel(self.men_marriage_rural_data_path)
+        pair1_df = pd.read_excel(self.pair1_data_path)
+        pair2_df = pd.read_excel(self.pair2_data_path)
+        pair3_df = pd.read_excel(self.pair3_data_path)
+        summary = pd.read_excel(self.pair_summary_data_path)
 
-        pair1_df_with_childs = pd.read_excel('population_building_data/pair1_v2.xlsx')
-        pair2_df_with_childs = pd.read_excel('population_building_data/pair2_v2.xlsx')
-        pair3_df_with_childs = pd.read_excel('population_building_data/pair3_v2.xlsx')
+        pair1_df_with_childs = pd.read_excel(self.pair1_childs_data_path)
+        pair2_df_with_childs = pd.read_excel(self.pair2_childs_data_path)
+        pair3_df_with_childs = pd.read_excel(self.pair3_childs_data_path)
 
-        mothers_df = pd.read_csv('./data/mothers_data/BRaO2015-2021.txt')
+        mothers_df = pd.read_csv(self.mothers_age_distribution_data_path)
         mothers_df = mothers_df[mothers_df.Year == 2021]
         mothers_df = mothers_df[mothers_df.Reg == 1115]
 
@@ -218,9 +233,13 @@ class InfectionModelExperimental:
         # создадим генераторы pair для добавления братьев или сестёр партнёров
         pair_choose_gen = ProbaTableDistributionGenerator(prob_arr=np.array([0.6, 0.35, 0.05]),
                                                           values=np.array([0, 1, 2]))
-        # создадим генераторы выбора между братом и сестрой
-        sib_par_gen = ProbaTableDistributionGenerator(prob_arr=np.array([0.4, 0.6]),
+        # создадим генераторы выбора между братом/сестрой и родителем
+        sib_par_gen1 = ProbaTableDistributionGenerator(prob_arr=np.array([0.4, 0.6]),
                                                       values=np.array([0, 1]))
+        sib_par_gen2 = ProbaTableDistributionGenerator(prob_arr=np.array([0.97, 0.03]),
+                                                       values=np.array([0, 1]))
+        sib_par_gen3 = ProbaTableDistributionGenerator(prob_arr=np.array([1.0, 0.]),
+                                                       values=np.array([0, 1]))
 
         # let's start main cycle
         # база агентов
@@ -303,6 +322,7 @@ class InfectionModelExperimental:
                 if (childs_count == 0) and (j == 1):
                     current_agent_pos, last_id, last_mother_age, _ = generate_pair(agents_base, hhs_db, married_men_age_range_gen,
                                                                                    current_agent_pos, i, last_id, age_range_table, lb, rb)
+
                     pair_ages[:, j - 1] = last_mother_age, _
                     continue
                 if j == 1:
@@ -312,14 +332,6 @@ class InfectionModelExperimental:
                 elif j == 3:
                     mothers_age_gen = mothers_age_third_child_gen
 
-                third_pair_threshold = 60
-                if last_mother_age > third_pair_threshold:
-                    current_agent_pos, last_id, last_mother_age, _ = generate_pair(agents_base, hhs_db,
-                                                                                   married_men_age_range_gen,
-                                                                                   current_agent_pos, i, last_id,
-                                                                                   age_range_table, lb, rb)
-                    pair_ages[:, j - 1] = last_mother_age, _
-                    continue
                 current_agent_pos, last_id, last_mother_age, _ = generate_pair_from_child_age(agents_base, hhs_db,
                                                                                               last_mother_age,
                                                                                               mothers_age_gen,
@@ -338,10 +350,19 @@ class InfectionModelExperimental:
                                                                        current_agent_pos, i, last_id, age_range_table)
             else:
                 for j in range(other_count):
-                    current_agent_pos, last_id, _ = generate_random_person(agents_base, hhs_db,
-                                                                           adult_agents_age_range_gen,
-                                                                           current_agent_pos, i, last_id,
-                                                                           age_range_table)
+                    # current_agent_pos, last_id, _ = generate_random_person(agents_base, hhs_db,
+                    #                                                        adult_agents_age_range_gen,
+                    #                                                        current_agent_pos, i, last_id,
+                    #                                                        age_range_table)
+                    current_agent_pos, last_id, _ = generate_random_person_based(agents_base, hhs_db,
+                                                                                 adult_agents_age_range_gen,
+                                                                                 current_agent_pos, i, last_id,
+                                                                                 age_range_table, pair_ages,
+                                                                                 pair_count, pair_choose_gen,
+                                                                                 sib_par_gen1, sib_par_gen2,
+                                                                                 sib_par_gen3, child_diff_bounds12[0],
+                                                                                 child_diff_bounds12[1],
+                                                                                 mothers_age_first_child_gen)
 
         self.agents_database = agents_base
         self.hhs_database = hhs_db
@@ -365,3 +386,17 @@ class InfectionModelExperimental:
         ax.set_ylabel('Contact group')
         sns.heatmap(contacts_count_array, ax=ax)
         ax.invert_yaxis()
+
+    def build_contacts_graph_representation(self):
+        self.contacts_graph = nx.Graph()
+        self.contacts_graph.add_nodes_from(self.agents_database[:, 0])
+        for i in tqdm(range(self.hhs_database.shape[0])):
+            hhs_type = self.hhs_database[i, 1]
+            if hhs_type == 1:
+                continue
+            for participant_i in range(hhs_type):
+                participant_id = self.hhs_database[i, 3 + participant_i]
+                for contact_member_i in range(participant_i + 1, hhs_type):
+                    contact_member_id = self.hhs_database[i, 3 + contact_member_i]
+                    self.contacts_graph.add_edge(participant_i, contact_member_i)
+        nx.write_sparse6(self.contacts_graph, "./contacts_graph.s6")
