@@ -4,15 +4,6 @@ import numpy as np
 from lightgbm import LGBMRegressor
 
 
-"""
- Внимание!
- В проверяющей системе имеется проблема с catboost.
- При использовании этой библиотеки, в скрипте с решением необходимо инициализировать метод с
- использованием `train_dir` как показано тут:
- CatBoostRegressor(train_dir='/tmp/catboost_info')
-"""
-
-
 def count_listed_data(col):
     res_dict = {}
     for i in col:
